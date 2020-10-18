@@ -1,11 +1,10 @@
 package model;
 
 
-public class RowGameModel 
-{
+public class RowGameModel {
     public static final String GAME_END_NOWINNER = "Game ends in a draw";
 
-    public RowBlockModel[][] blocksData = new RowBlockModel[3][3];
+    public RowBlockModel[][] blocksData;
 
     /**
      * The current player taking their turn
@@ -16,21 +15,23 @@ public class RowGameModel
     private String finalResult = null;
 
 
-    public RowGameModel() {
-	super();
+    public RowGameModel(int numRows, int numCols) {
+        super();
+        movesLeft = numRows * numCols;
+        blocksData = new RowBlockModel[numRows][numCols];
 
-	for (int row = 0; row < 3; row++) {
-	    for (int col = 0; col < 3; col++) {
-		blocksData[row][col] = new RowBlockModel(this);
-	    } // end for col
-	} // end for row
+        for (int row = 0; row < numRows; row++) {
+            for (int col = 0; col < numCols; col++) {
+                blocksData[row][col] = new RowBlockModel(this);
+            } // end for col
+        } // end for row
     }
 
     public String getFinalResult() {
-	return this.finalResult;
+        return this.finalResult;
     }
 
     public void setFinalResult(String finalResult) {
-	this.finalResult = finalResult;
+        this.finalResult = finalResult;
     }
 }
