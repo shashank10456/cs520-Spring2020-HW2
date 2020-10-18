@@ -176,7 +176,7 @@ public class RowGameController {
 			gameModel.blocksData[blockRowIndex][blockColumnIndex].setContents("O");
 			handleLegalMoves(blockRowIndex, blockColumnIndex);
 			gameModel.player = "1";
-			if (whoIsTheWinner(blockRowIndex, blockColumnIndex, numberOfRows, numberOfRows) == 2) {
+			if (whoIsTheWinner(blockRowIndex, blockColumnIndex, numberOfRows, numberOfColumns) == 2) {
 				gameModel.setFinalResult("Player 2 wins!");
 				endGame();
 			} else if (movesLeft == 0) {
