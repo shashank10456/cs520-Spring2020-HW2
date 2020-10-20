@@ -1,5 +1,6 @@
 package model;
 
+import java.beans.PropertyChangeListener;
 
 public class RowGameModel {
     public static final String GAME_END_NOWINNER = "Game ends in a draw";
@@ -34,4 +35,14 @@ public class RowGameModel {
     public void setFinalResult(String finalResult) {
         this.finalResult = finalResult;
     }
+    
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        for (int row = 0; row < numRows; row++) {
+            for (int col = 0; col < numCols; col++) {
+                blocksData[row][col] = new RowBlockModel(this);
+                blocksData[row][col].addPropertyChangeListener(listener);
+            } // end for col
+        } // end 
+    }
+    
 }

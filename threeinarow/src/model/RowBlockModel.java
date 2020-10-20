@@ -1,5 +1,8 @@
 package model;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 /**
  * The RowBlockModel class represents a given block in the game.
@@ -20,6 +23,9 @@ public class RowBlockModel
      * Whether or not it is currently legal to move into this block
      */
     private boolean isLegalMove;
+    
+    
+    public final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     /**
      * Creates a new block that will be contained in the given game.
@@ -36,6 +42,11 @@ public class RowBlockModel
 	
 	this.game = game;
 	this.reset();
+	
+    }
+    
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        this.pcs.addPropertyChangeListener(listener);
     }
 
     public RowGameModel getGame() {
@@ -52,7 +63,9 @@ public class RowBlockModel
 	if (value == null) {
 	    throw new IllegalArgumentException("The value must be non-null.");
 	}
+	
 	this.contents = value;
+	this.pcs.firePropertyChange("value", "sha", "amr");
     }
 
     /**
