@@ -1,5 +1,7 @@
 package model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 public class RowGameModel {
     public static final String GAME_END_NOWINNER = "Game ends in a draw";
@@ -13,7 +15,7 @@ public class RowGameModel {
     public int movesLeft = 9;
 
     private String finalResult = null;
-
+    private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public RowGameModel(int numRows, int numCols) {
         super();
@@ -32,6 +34,34 @@ public class RowGameModel {
     }
 
     public void setFinalResult(String finalResult) {
+        String oldResult = this.finalResult;
         this.finalResult = finalResult;
+        this.pcs.firePropertyChange("finalresult", oldResult, this.finalResult);
+    }
+
+    public void setLegalMove(int blockRowIndex, int blockColumnIndex, boolean isLegalMove) {
+        boolean oldValue = this.blocksData[blockRowIndex][blockColumnIndex].getIsLegalMove();
+        this.blocksData[blockRowIndex][blockColumnIndex].setIsLegalMove(isLegalMove);
+        this.pcs.firePropertyChange("isLegalMove", oldValue, isLegalMove);
+    }
+
+    public void setContent(int blockRowIndex, int blockColumnIndex, String content) {
+        // TODO Auto-generated method stub
+        this.blocksData[blockRowIndex][blockColumnIndex].setContents(content);
+        this.pcs.firePropertyChange("Content", "", content);
+    }
+
+    public void setPlayer(String player) {
+        // TODO Auto-generated method stub
+        String oldValue = this.player;
+        this.player = player;
+        this.pcs.firePropertyChange("player", oldValue, this.player);
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener propertyChangeListener) {
+        this.pcs.addPropertyChangeListener(propertyChangeListener);
+    }
+    public void removePropertyChangeListener(PropertyChangeListener propertyChangeListener) {
+        this.pcs.removePropertyChangeListener(propertyChangeListener);
     }
 }

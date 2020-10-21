@@ -7,6 +7,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -29,15 +31,25 @@ public class RowGameBoardView implements RowGameView {
         blocks = new JButton[numRows][numCols];
         numberOfRows = numRows;
         numberOfColumns = numCols;
+
+        gameController.gameModel.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                gameController.gameView.update(gameController.gameModel);
+            }
+        });
+
         // Initialize a JButton for each cell of the 3x3 game board.
         for (int row = 0; row < numRows; row++) {
             for (int column = 0; column < numCols; column++) {
                 blocks[row][column] = new JButton();
                 blocks[row][column].setPreferredSize(new Dimension(75, 75));
                 game.add(blocks[row][column]);
+                int clickedRow = row;
+                int clickedColumn = column;
                 blocks[row][column].addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        gameController.move((JButton) e.getSource());
+                        gameController.move((JButton) e.getSource(), clickedRow, clickedColumn);
                     }
                 });
             }
