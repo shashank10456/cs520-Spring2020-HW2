@@ -43,7 +43,7 @@ public class RowGameGUI implements RowGameView {
         gui.setVisible(true);
         reset.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                gameController.resetGame();
+                gameController.gameRules.resetGame(gameController.gameModel, numRows, numCols);
             }
         });
     }

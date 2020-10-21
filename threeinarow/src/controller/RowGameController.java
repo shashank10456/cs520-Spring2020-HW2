@@ -9,23 +9,23 @@ public class RowGameController {
 	public RowGameModel gameModel;
 	public int numberOfRows;
 	public int numberOfColumns;
+	public RowGameRulesStrategy gameRules;
 
-	public RowGameController(int numRows, int numCols) {
+	public RowGameController(int numRows, int numCols, int rule) {
 		gameModel = new RowGameModel(numRows, numCols);
 		numberOfRows = numRows;
 		numberOfColumns = numCols;
-		resetGame();
+
+		if (rule == 1) {
+			gameRules = new ThreeInARowRules();
+		} else {
+			gameRules = new TicTacToe();
+		}
+		gameRules.resetGame(gameModel, numRows, numCols);
 	}
 
 	public RowGameModel getModel() {
 		return this.gameModel;
-	}
-
-	public void handleLegalMoves(int blockRowIndex, int blockColumnIndex) {
-		gameModel.setLegalMove(blockRowIndex, blockColumnIndex, false);
-		if (blockRowIndex > 0) {
-			gameModel.setLegalMove(blockRowIndex - 1, blockColumnIndex, true);
-		}
 	}
 
 	public String validateAndGetContent(int blockRowIndex, int blockColumnIndex) {
@@ -81,7 +81,7 @@ public class RowGameController {
 		if (player.equals("1")) {
 			gameModel.setContent(blockRowIndex, blockColumnIndex, "X");
 
-			handleLegalMoves(blockRowIndex, blockColumnIndex);
+			gameRules.handleLegalMoves(gameModel, blockRowIndex, blockColumnIndex);
 
 			gameModel.setPlayer("2");
 
@@ -95,7 +95,7 @@ public class RowGameController {
 			// Check whether player 2 won
 			gameModel.setContent(blockRowIndex, blockColumnIndex, "O");
 
-			handleLegalMoves(blockRowIndex, blockColumnIndex);
+			gameRules.handleLegalMoves(gameModel, blockRowIndex, blockColumnIndex);
 			gameModel.setPlayer("1");
 			if (whoIsTheWinner(blockRowIndex, blockColumnIndex, numberOfRows, numberOfColumns) == 2) {
 				gameModel.setFinalResult("Player 2 wins!");
@@ -114,20 +114,5 @@ public class RowGameController {
 				this.gameModel.setLegalMove(row, column, false);
 			}
 		}
-	}
-
-
-	public void resetGame() {
-		for (int row = 0; row < numberOfRows; row++) {
-			for (int column = 0; column < numberOfColumns; column++) {
-				gameModel.blocksData[row][column].reset();
-				// Enable the bottom row
-				gameModel.setLegalMove(row, column, row == numberOfRows - 1);
-			}
-		}
-		gameModel.player = "1";
-		gameModel.movesLeft = numberOfRows * numberOfColumns;
-		gameModel.setFinalResult(null);
-
 	}
 }
