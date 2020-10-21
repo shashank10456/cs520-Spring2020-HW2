@@ -1,4 +1,5 @@
 package view;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -6,9 +7,6 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -22,7 +20,6 @@ public class RowGameBoardView implements RowGameView {
     public JPanel gamePanel = new JPanel(new FlowLayout());
     public int numberOfRows;
     public int numberOfColumns;
-    public final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public RowGameBoardView(RowGameController gameController, int numRows, int numCols) {
         super();
@@ -45,19 +42,8 @@ public class RowGameBoardView implements RowGameView {
                 });
             }
         }
-        
-        this.pcs.addPropertyChangeListener(new PropertyChangeListener() {
-			
-			@Override
-			public void propertyChange(PropertyChangeEvent arg0) {
-				// TODO Auto-generated method stub
-				System.out.println("call hogya bc");
-				
-			}
-		});
     }
 
-    
     /**
      * Updates the game view after the game model
      * changes state.
@@ -81,7 +67,6 @@ public class RowGameBoardView implements RowGameView {
      * @param column The column that contains the block
      */
     protected void updateBlock(RowGameModel gameModel, int row, int col) {
-    	this.pcs.firePropertyChange("value", "sha", "amr");
         blocks[row][col].setText(gameModel.blocksData[row][col].getContents());
         blocks[row][col].setEnabled(gameModel.blocksData[row][col].getIsLegalMove());
     }

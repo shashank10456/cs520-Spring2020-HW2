@@ -6,8 +6,6 @@ import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 import model.RowGameModel;
 import view.RowGameGUI;
@@ -36,7 +34,6 @@ public class RowGameController {
 		gameView = new RowGameGUI(this, numRows, numCols);
 		numberOfRows = numRows;
 		numberOfColumns = numCols;
-		gameModel.addPropertyChangeListener(gameView.getPropertyChangeListener());
 		resetGame();
 	}
 

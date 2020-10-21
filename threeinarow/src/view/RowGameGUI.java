@@ -5,8 +5,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 import model.RowGameModel;
 import controller.RowGameController;
@@ -17,22 +15,9 @@ public class RowGameGUI implements RowGameView {
     public RowGameBoardView gameBoardView;
     public JButton reset = new JButton("Reset");
     public RowGameStatusView gameStatusView;
-    private PropertyChangeListener pcl = new PropertyChangeListener() {
-		
-		@Override
-		public void propertyChange(PropertyChangeEvent arg0) {
-			// TODO Auto-generated method stub
-			update(gameModel);
-			
-		}
-	};
 
     private RowGameController gameController;
 
-    public PropertyChangeListener getPropertyChangeListener() {
-    	return this.pcl;
-		
-	}
 
     /**
      * Creates a new game initializing the GUI.
