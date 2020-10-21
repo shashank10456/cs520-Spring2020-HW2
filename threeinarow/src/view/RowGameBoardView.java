@@ -35,7 +35,7 @@ public class RowGameBoardView implements RowGameView {
         gameController.gameModel.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
-                gameController.gameView.update(gameController.gameModel);
+                update(gameController.gameModel);
             }
         });
 

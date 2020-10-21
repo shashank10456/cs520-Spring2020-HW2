@@ -1,26 +1,17 @@
 package controller;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextArea;
-import javax.swing.JPanel;
-import java.awt.*;
-import java.awt.event.*;
-
 import model.RowGameModel;
-import view.RowGameGUI;
 
 public class RowGameController {
 	public static final String GAME_END_NOWINNER = "Game ends in a draw";
 
 	public RowGameModel gameModel;
-	public RowGameGUI gameView;
 	public int numberOfRows;
 	public int numberOfColumns;
 
 	public RowGameController(int numRows, int numCols) {
 		gameModel = new RowGameModel(numRows, numCols);
-		gameView = new RowGameGUI(this, numRows, numCols);
 		numberOfRows = numRows;
 		numberOfColumns = numCols;
 		resetGame();
@@ -28,14 +19,6 @@ public class RowGameController {
 
 	public RowGameModel getModel() {
 		return this.gameModel;
-	}
-
-	public RowGameGUI getView() {
-		return this.gameView;
-	}
-
-	public void startUp() {
-		gameView.gui.setVisible(true);
 	}
 
 	public void handleLegalMoves(int blockRowIndex, int blockColumnIndex) {

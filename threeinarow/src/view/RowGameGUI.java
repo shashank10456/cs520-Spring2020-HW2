@@ -24,7 +24,6 @@ public class RowGameGUI implements RowGameView {
      */
     public RowGameGUI(RowGameController gameController, int numRows, int numCols) {
         this.gameController = gameController;
-
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setSize(new Dimension(1000, 750));
         gui.setResizable(true);
@@ -41,7 +40,7 @@ public class RowGameGUI implements RowGameView {
         gui.add(gamePanel, BorderLayout.NORTH);
         gui.add(options, BorderLayout.CENTER);
         gui.add(messages, BorderLayout.SOUTH);
-
+        gui.setVisible(true);
         reset.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gameController.resetGame();

@@ -1,4 +1,6 @@
 import controller.RowGameController;
+import view.RowGameGUI;
+
 import java.util.*;  
 
 public class RowGameApp {
@@ -14,6 +16,7 @@ public class RowGameApp {
     	int numberOfColumns= sc.nextInt();  
     	
         RowGameController game = new RowGameController(numberOfRows, numberOfColumns);
-        game.startUp();
+        new RowGameGUI(game, numberOfRows, numberOfColumns);
+        game.resetGame();
     }
 }

@@ -2,6 +2,8 @@ package view;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -18,7 +20,12 @@ public class RowGameStatusView implements RowGameView
     
     public RowGameStatusView(RowGameController gameController) {
 	super();
-
+	gameController.gameModel.addPropertyChangeListener(new PropertyChangeListener() {
+        @Override
+        public void propertyChange(PropertyChangeEvent evt) {
+            update(gameController.gameModel);
+        }
+    });
 	messages.setBackground(Color.white);
 	messages.add(playerturn);
     }
