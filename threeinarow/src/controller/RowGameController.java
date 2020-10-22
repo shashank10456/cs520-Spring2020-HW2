@@ -60,9 +60,11 @@ public class RowGameController {
 		String q2Diagonal = validateAndGetContent(blockRowIndex, blockColumnIndex) + validateAndGetContent(blockRowIndex - 1, blockColumnIndex - 1) + validateAndGetContent(blockRowIndex - 2, blockColumnIndex - 2);
 		String q3Diagonal = validateAndGetContent(blockRowIndex, blockColumnIndex) + validateAndGetContent(blockRowIndex + 1, blockColumnIndex - 1) + validateAndGetContent(blockRowIndex + 2, blockColumnIndex - 2);
 		String q4Diagonal = validateAndGetContent(blockRowIndex, blockColumnIndex) + validateAndGetContent(blockRowIndex + 1, blockColumnIndex + 1) + validateAndGetContent(blockRowIndex + 2, blockColumnIndex + 2);
-		if (q1Diagonal.equals("XXX") || q2Diagonal.equals("XXX") || q3Diagonal.equals("XXX") || q4Diagonal.equals("XXX")) {
+		String q1Andq3Diagonal = validateAndGetContent(blockRowIndex, blockColumnIndex) + validateAndGetContent(blockRowIndex + 1, blockColumnIndex + 1) + validateAndGetContent(blockRowIndex - 1, blockColumnIndex - 1);
+		String q2Andq4Diagonal = validateAndGetContent(blockRowIndex, blockColumnIndex) + validateAndGetContent(blockRowIndex + 1, blockColumnIndex - 1) + validateAndGetContent(blockRowIndex - 1, blockColumnIndex + 1);
+		if (q1Diagonal.equals("XXX") || q2Diagonal.equals("XXX") || q3Diagonal.equals("XXX") || q4Diagonal.equals("XXX") || q1Andq3Diagonal.equals("XXX") || q2Andq4Diagonal.equals("XXX")) {
 			return 1;
-		} else if (q1Diagonal.equals("OOO") || q2Diagonal.equals("OOO") || q3Diagonal.equals("OOO") || q4Diagonal.equals("OOO")) {
+		} else if (q1Diagonal.equals("OOO") || q2Diagonal.equals("OOO") || q3Diagonal.equals("OOO") || q4Diagonal.equals("OOO") || q1Andq3Diagonal.equals("OOO") || q2Andq4Diagonal.equals("OOO")) {
 			return 2;
 		}
 		return 0;
