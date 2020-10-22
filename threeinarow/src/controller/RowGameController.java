@@ -71,15 +71,17 @@ public class RowGameController {
 	}
 
 
-	public void move(JButton block, int row, int column) {
-
-		gameModel.movesLeft = gameModel.movesLeft - 1;
-		String player = gameModel.player;
-		int movesLeft = gameModel.movesLeft;
+	public void move(int row, int column) {
 
 		int blockRowIndex = row;
 		int blockColumnIndex = column;
 
+		if (row >= 0 && row < numberOfRows && column>=0 && column<numberOfColumns &&  gameModel.blocksData[row][column].getIsLegalMove() == false) {
+			return;
+		}
+		gameModel.movesLeft = gameModel.movesLeft - 1;
+		String player = gameModel.player;
+		int movesLeft = gameModel.movesLeft;
 		if (player.equals("1")) {
 			gameModel.setContent(blockRowIndex, blockColumnIndex, "X");
 

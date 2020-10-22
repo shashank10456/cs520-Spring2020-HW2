@@ -49,7 +49,7 @@ public class RowGameBoardView implements RowGameView {
                 int clickedColumn = column;
                 blocks[row][column].addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        gameController.move((JButton) e.getSource(), clickedRow, clickedColumn);
+                        gameController.move(clickedRow, clickedColumn);
                     }
                 });
             }
