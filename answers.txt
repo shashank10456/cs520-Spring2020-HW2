@@ -1,0 +1,30 @@
+Name: Shashank Srigiri
+Collaborators : Jaydeep Rao
+
+SEC A:
+
+1. Code is monolithic(Non Modular): 
+This has been fixed by both MVC refactoring (Majorly) as well as by my code. MVC helped greatly in separating
+out the visual, data and logical components, whereas my code has helped in writing functions which are modular and can be highly reused (ex: validateAndGetContent(), handleLegalMoves(), etc).
+
+2. Code doesn’t support extensibility:
+This has been fixed by my code. Previously it was hardcoded for a 3*3 grid. But with my code, it can be extended for arbitrary values of rows and columns.
+
+3. Testability:
+Testability has been improved by both MVC refactoring as well by my own code. MVC helped greatly in separating
+out the visual, data and logical components so they can be tested individually. Each component has its own behaviour which needs to be tested in isolation
+unlike earlier where the functionalities of the components were combined. Therefore, the Testability and readability of the code increases improving the productivity.
+Even, my code helps a lot in increasing the testability and readability. For example, the move method had a huge amount of redundant code, so testing had to be performed
+for each case(lot of redundant code), so lot of redundant test cases had to be written. But now, my move function is extensible, modular and can be reused as well. So, the 
+number of test cases required to cover the entire move function is very minimal as compared to the previous code.
+
+4. Encapsulation: This has been implemented by my code.
+
+SEC B:-
+
+For the RowGameController, I applied the Strategy Design Pattern.
+
+SEC C:-
+
+Observable: RowGameModel
+
