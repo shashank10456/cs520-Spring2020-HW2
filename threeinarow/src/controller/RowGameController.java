@@ -13,6 +13,7 @@ public class RowGameController {
 	public static final String GAME_END_NOWINNER = "Game ends in a draw";
 
 	public RowGameModel gameModel;
+	// These variables are declared public or private depending upon the need. This addresses #4 (Encapsulation)
 	private int numberOfRows;
 	private int numberOfColumns;
 	public RowGameRulesStrategy gameRules;
@@ -89,6 +90,7 @@ public class RowGameController {
 		return 0;
 	}
 
+	// Simplified the logic to improve the testability and avoid redundancy of code. This addresses #3 (Testability).
 	/**
 	 * Handles the move/turn of the player and changes the corresponding values
 	 *
@@ -128,6 +130,8 @@ public class RowGameController {
 			}
 		}
 	}
+
+	// parameterizing the number of rows and columns in a grid. This addresses issue #2
 	/**
 	 * Ends the game disallowing further player turns.
 	 */

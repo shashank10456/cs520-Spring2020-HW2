@@ -3,6 +3,7 @@ import view.RowGameGUI;
 
 import java.util.*;
 
+// Separated the logic into modular components (Model, view, controller). This addresses identified issue #1 (Code is monolithic(Non Modular)).
 public class RowGameApp {
     /**                                                                             
      * Starts a new game.
@@ -35,6 +36,7 @@ public class RowGameApp {
             System.out.println("Game ends in a draw!");
             return;
         }
+        // parameterizing the number of rows and columns in a grid. This addresses issue #2 (extensible code)
         RowGameController game = new RowGameController(numberOfRows, numberOfColumns, rule);
         new RowGameGUI(game, numberOfRows, numberOfColumns);
         game.gameRules.resetGame(game.gameModel, numberOfRows, numberOfColumns);
