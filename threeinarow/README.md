@@ -15,4 +15,4 @@ The way I have done the coding, debugging, compiling, running and testing is by 
 
 6. Note, that if the number of rows and columns are both less than 3 and greater than 0, then you will get `Game ends in a draw!` on the terminal. Else, you should see the UI Grid popup with the same number of rows and columns as entered earlier.
 
-7. Testing can be done combinely or individually. To test combinely, just right click on the (`threeinarow/test`) or (`/test` folder inside `threeinarow`). Again hover/click on `run as` and choose `JUnit Test`. To test individually, right click on the correspoonding test file (Ex: modelTests.java), hover/click on `run as` and choose `JUnit Test`.
+7. Testing can be done combinely or individually. To test combinely, just right click on the (`threeinarow/test`) or (`/test` folder inside `threeinarow`). Again hover/click on `run as` and click on `JUnit Test`. To test individually, right click on the corresponding test file (Ex: modelTests.java), hover/click on `run as` and click on `JUnit Test`.
