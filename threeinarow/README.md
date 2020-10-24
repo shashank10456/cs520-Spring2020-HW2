@@ -1,21 +1,18 @@
 # ThreeInARow
 This is a basic Java implementation of the Three in a Row game.
 
-### How to build and test (from Terminal):
+The way I have done the coding, debugging, compiling, running and testing is by installing eclipse. Install JDK, JRE (version 14.x.x) and make sure you are able to run a java program.
 
-1. Make sure that you have Apache Ant installed. Run each ant command in the threeinarow folder, which contains the `build.xml` build file.
+1. Make sure that you have eclipse installed.
 
-2. Run `ant document` to generate the javadoc (a hypertext description) for all of the java classes. Generated hypertext description will be in the `jdoc` folder. Open the `index.html` file. 
+2. Right click on `RowGameApp.java` and then hover-over/click-on the `run as` text, and then click on `Java Application`. This should start our terminal.
 
-3. Run `ant compile` to compile all of the java classes. Compiled classes will be in the `bin` folder.
+3. On the Terminal, you should see `Enter number of Rows: `. Please enter any natural number representing the number of rows in the grid and press enter.
 
-4. Run `ant test` to run all unit tests.
+4. On the Terminal, you should see `Enter number of Columns: `. Please enter any natural number representing the number of columns in the grid and press enter.
 
-### How to run (from Terminal):
+5. On the Terminal, you should see `Enter 1 to play ThreeInARow or any other number to play TicTacToe: `. Please enter any natural number representing whether you want to play ThreeInARow or TicTacToe. So, enter 1 to play ThreeInARow, or enter 2 to play TicTacToe.
 
-1. After building the project (i.e., running `ant`), run the following command in the threeinarow folder:
-   `java -cp bin RowGameApp`
+6. Note, that if the number of rows and columns are both less than 3 and greater than 0, then you will get `Game ends in a draw!` on the terminal. Else, you should see the UI Grid popup with the same number of rows and columns as entered earlier.
 
-### How to clean up (from Terminal):
-
-1. Run `ant clean` to clean the project (i.e., delete all generated files).
+7. Testing can be done combinely or individually. To test combinely, just right click on the (`threeinarow/test`) or (`/test` folder inside `threeinarow`). Again hover/click on `run as` and choose `JUnit Test`. To test individually, right click on the correspoonding test file (Ex: modelTests.java), hover/click on `run as` and choose `JUnit Test`.
