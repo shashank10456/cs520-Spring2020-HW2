@@ -20,8 +20,8 @@ import model.RowGameModel;
 public class RowGameBoardView implements RowGameView {
     public JButton[][] blocks;
     public JPanel gamePanel = new JPanel(new FlowLayout());
-    public int numberOfRows;
-    public int numberOfColumns;
+    private int numberOfRows;
+    private int numberOfColumns;
 
     public RowGameBoardView(RowGameController gameController, int numRows, int numCols) {
         super();

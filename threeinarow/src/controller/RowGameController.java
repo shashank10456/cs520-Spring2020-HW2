@@ -13,8 +13,8 @@ public class RowGameController {
 	public static final String GAME_END_NOWINNER = "Game ends in a draw";
 
 	public RowGameModel gameModel;
-	public int numberOfRows;
-	public int numberOfColumns;
+	private int numberOfRows;
+	private int numberOfColumns;
 	public RowGameRulesStrategy gameRules;
 	// Initialize the gameModel and the rules with which the game has to be played.
 	public RowGameController(int numRows, int numCols, int rule) {
